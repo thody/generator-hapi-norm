@@ -1,1 +1,3 @@
-# generator-hapi-norm
+# Normative Hapi Yeoman Generator
+
+Self contained Hapi w/gulp Yeoman generator.

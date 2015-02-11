@@ -4,11 +4,10 @@
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "michaelryancaputo/generator-hapi-norm",
+  "repository": "http://github.com/normative/generator-hapi-norm",
   "author": {
-    "name": "Michael Caputo",
-    "email": "me@mikecaputo.com",
-    "url": "https://github.com/michaelryancaputo"
+    "name": "Normative Design",
+    "url": "http://github.com/normative"
   },
   "engines": {
     "node": ">=0.12.0"
