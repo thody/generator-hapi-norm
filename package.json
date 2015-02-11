@@ -16,7 +16,8 @@
     "test": "mocha"
   },
   "files": [
-    "app"
+    "app",
+    "controller"
   ],
   "keywords": [
     "yeoman-generator"
@@ -24,7 +25,8 @@
   "dependencies": {
     "yeoman-generator": "^0.18.0",
     "chalk": "^0.5.0",
-    "yosay": "^0.3.0"
+    "yosay": "^0.3.0",
+    "slug": "^0.8.0"
   },
   "devDependencies": {
     "mocha": "*"
