@@ -13,14 +13,13 @@ module.exports = yeoman.generators.Base.extend({
       desc: 'The subgenerator name'
     });
   },
-
-  writing: function () {
-
+  createControllerFile: function() {
     var nameSlug = slug(this.name);
 
-    this.fs.copy(
-      this.templatePath('controller.js'),
-      this.destinationPath('./lib/controllers/' + nameSlug + 'Ctrl.js')
-    );
+    this.humanizedSingularName = nameSlug;
+
+    this.template(this.templatePath('controller.js'), this.destinationPath('./lib/controllers/' + nameSlug + 'Ctrl.js'))
+
   }
+
 });
