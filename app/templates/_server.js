@@ -47,7 +47,7 @@ server.route(require('./lib/controllers/routes'));
 server.register({register: require('lout')}, function(err) {if(err) {console.log(err); }});
 server.register({
   register: good,
-  options: options
+  options: goodConfig
 }, function (err) {
   if (err) {console.error(err);}
 

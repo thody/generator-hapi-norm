@@ -4,7 +4,7 @@
   "dependencies": {
     "hapi": "^8.2.0",
     "good": "^5.1.1",
-    "good-console": "^4.1.1",
+    "good-console": "^4.1.0",
     "good-file": "^4.0.2",
     "good-http": "^4.0.0",
     "lab": "^5.2.1",
