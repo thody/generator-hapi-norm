@@ -38,6 +38,11 @@ var HapiNorm = yeoman.generators.Base.extend({
       name: 'repoUrl',
       message: 'What is the repo URL?',
       default: ''
+    },{
+      type: 'confirm',
+      name: 'includeMongo',
+      message: 'Would you like to include mongo in this project?',
+      default: true
     }];
 
     this.prompt(prompts, function (props) {
@@ -46,6 +51,8 @@ var HapiNorm = yeoman.generators.Base.extend({
       this.appKeywords = props.appKeywords;
       this.appAuthor = props.appAuthor;
       this.repoUrl = props.repoUrl;
+
+      this.includeMongo = props.includeMongo;
 
       this.slugifiedAppName = this._.slugify(this.appName);
       this.humanizedAppName = this._.humanize(this.appName);
@@ -69,10 +76,6 @@ var HapiNorm = yeoman.generators.Base.extend({
         this.destinationPath('gulpfile.js')
       );
       this.fs.copy(
-        this.templatePath('_server.js'),
-        this.destinationPath('server.js')
-      );
-      this.fs.copy(
         this.templatePath('_README'),
         this.destinationPath('README')
       );
@@ -89,7 +92,8 @@ var HapiNorm = yeoman.generators.Base.extend({
 
   renderApplicationDependenciesFiles: function() {
  		this.template('_package.json', 'package.json');
- 		this.template('_bower.json', 'bower.json');
+    this.template('_bower.json', 'bower.json');
+    this.template('_server.js', 'server.js');
  	},
 
   install: function () {
