@@ -5,12 +5,14 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var Hapi = require('hapi');
-var config = require('./lib/config/config');
 var server = new Hapi.Server();
+var config = require('./lib/config/config');
 var good = require('good');
 var goodConsole = require('good-console');
 var goodFile = require('good-file');
 var goodHttp = require('good-http');
+var fs = require('fs');
+var path = require('path');
 
 var goodConfig = {
     opsInterval: 1000,
@@ -39,7 +41,12 @@ server.connection(config.server);
 /**
  * Adding routes
  */
-server.route(require('./lib/controllers/routes'));
+var normalizedPath = path.join(__dirname, "lib/controllers");
+fs.readdirSync(normalizedPath).forEach(function(file) {
+  server.route(
+    require("./lib/controllers/" + file)
+  );
+});
 
 /**
  * Adding plugins
