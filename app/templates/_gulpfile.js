@@ -15,11 +15,17 @@ gulp.task('test', function () {
     .pipe(jshint.reporter('default'));
 });
 
+gulp.task('lint', function () {
+  gulp.src('./**/*.js')
+    .pipe(jshint.reporter('default'));
+});
+
 gulp.task('serve', [], function(){
   nodemon({ script: 'server.js'})
+    .on('change', ['lint'])
     .on('restart', function () {
-      console.log('restarted!')
-    })
+      console.log('restarted!');
+    });
 });
 
 gulp.task('default', ['test', 'serve']);
