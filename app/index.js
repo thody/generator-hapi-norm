@@ -20,18 +20,36 @@ var HapiNorm = yeoman.generators.Base.extend({
 
     var prompts = [{
       name: 'appName',
-      message: 'What is your app\'s name ?',
-      default: 'HapiNess'
-    //},{
-    //    type: 'confirm',
-    //    name: 'addDemoSection',
-    //    message: 'Would you like to generate a demo section ?',
-    //    default: true
+      message: 'What would you like to call your application?',
+      default: 'New Hapi Project'
+    }, {
+      name: 'appDescription',
+      message: 'How would you describe your application?',
+      default: 'Hapi Api'
+    }, {
+      name: 'appKeywords',
+      message: 'How would you describe your application in comma seperated key words?',
+      default: 'Hapi, Hapijs'
+    }, {
+      name: 'appAuthor',
+      message: 'What is your company/author name?',
+      default: 'Normative Design'
+    }, {
+      name: 'repoUrl',
+      message: 'What is the repo URL?',
+      default: ''
     }];
 
     this.prompt(prompts, function (props) {
       this.appName = props.appName;
-      this.addDemoSection = props.addDemoSection;
+      this.appDescription = props.appDescription;
+      this.appKeywords = props.appKeywords;
+      this.appAuthor = props.appAuthor;
+      this.repoUrl = props.repoUrl;
+
+      this.slugifiedAppName = this._.slugify(this.appName);
+      this.humanizedAppName = this._.humanize(this.appName);
+      this.capitalizedAppAuthor = this._.capitalize(this.appAuthor);
 
       done();
     }.bind(this));
@@ -40,24 +58,12 @@ var HapiNorm = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
         this.templatePath('_.gitignore'),
         this.destinationPath('.gitignore')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
       );
     },
 
     projectfiles: function () {
-      //this.fs.copy(
-      //  this.templatePath('editorconfig'),
-      //  this.destinationPath('.editorconfig')
-      //);
       this.fs.copy(
         this.templatePath('_gulpfile.js'),
         this.destinationPath('gulpfile.js')
@@ -80,6 +86,11 @@ var HapiNorm = yeoman.generators.Base.extend({
       );
     }
   },
+
+  renderApplicationDependenciesFiles: function() {
+ 		this.template('_package.json', 'package.json');
+ 		this.template('_bower.json', 'bower.json');
+ 	},
 
   install: function () {
     this.installDependencies({
