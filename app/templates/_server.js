@@ -14,6 +14,17 @@ var goodHttp = require('good-http');
 var fs = require('fs');
 var path = require('path');
 
+/**
+ * Err Function
+ * @param err
+ */
+var error = function(err) {
+  if(err) {
+    console.warn(err);
+    throw err;
+  }
+};
+
 var goodConfig = {
     opsInterval: 1000,
     reporters: [{
@@ -56,7 +67,7 @@ server.register({
   register: good,
   options: goodConfig
 }, function (err) {
-  if (err) {console.error(err);}
+  if (err) {error(err)}
 
   else {
     /**
@@ -69,5 +80,18 @@ server.register({
     }
   }
 });
+<% if (includeMongo) { %>var dbOpts = {
+    "url": "mongodb://localhost:27017/<%= slugifiedAppName %>",
+    "settings": {
+        "db": {
+            "native_parser": false
+        }
+    }
+};
+
+server.register({
+  register: require('hapi-mongodb'),
+  options: dbOpts
+}, error);<% } %>
 
 module.exports = server;
