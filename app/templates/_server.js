@@ -6,7 +6,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var Hapi = require('hapi');
 var server = new Hapi.Server();
-var config = require('./lib/config/config');
+var config = require('./config/config');
 var good = require('good');
 var goodConsole = require('good-console');
 var goodFile = require('good-file');
@@ -52,10 +52,10 @@ server.connection(config.server);
 /**
  * Adding routes
  */
-var normalizedPath = path.join(__dirname, "lib/controllers");
+var normalizedPath = path.join(__dirname, "controllers");
 fs.readdirSync(normalizedPath).forEach(function(file) {
   server.route(
-    require("./lib/controllers/" + file)
+    require("./controllers/" + file)
   );
 });
 

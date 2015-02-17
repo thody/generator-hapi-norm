@@ -80,8 +80,12 @@ var HapiNorm = yeoman.generators.Base.extend({
         this.destinationPath('README')
       );
       this.fs.copy(
-        this.templatePath('lib'),
-        this.destinationPath('lib')
+        this.templatePath('config'),
+        this.destinationPath('config')
+      );
+      this.fs.copy(
+        this.templatePath('controllers'),
+        this.destinationPath('controllers')
       );
       this.fs.copy(
         this.templatePath('test'),
