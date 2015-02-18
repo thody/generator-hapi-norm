@@ -49,6 +49,18 @@ lab.experiment('<%= humanizedSingularName %> Tests', function() {
       code.expect(res.statusCode).to.equal(200);
       done();
     });
+
+    lab.test('<%= humanizedSingularName %> endpoint GET list req', function(done) {
+      var options = {
+        method: 'GET',
+        url: '/<%= humanizedSingularName %>s'
+      };
+      server.inject(options, function(res) {
+        code.expect(res.statusCode).to.equal(200);
+        done();
+      });
+    });
+
   });
 
 });
