@@ -66,6 +66,6 @@
     "gulp-watch": "^0.5.0",
     "gulp-concat": "^2.1.7",
     "gulp-notify": "^0.3.4-1",
-    "gulp-nodemon": "^1.0.5",
+    "gulp-nodemon": "^1.0.5"
   }
 }
