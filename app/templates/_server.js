@@ -32,7 +32,7 @@ var goodConfig = {
         args:[{ log: '*', response: '*' }]
     }, {
         reporter: goodFile,
-        args: ['./test/fixtures/awesome_log', { ops: '*' }]
+        args: ['./test/awesome_log', { ops: '*' }]
     }, {
         reporter: goodHttp,
         args: [{ error: '*' }, 'http://prod.logs:3000', {
