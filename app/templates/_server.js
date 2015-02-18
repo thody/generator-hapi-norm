@@ -6,13 +6,17 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var Hapi = require('hapi');
 var server = new Hapi.Server();
-var config = require('./config/config');
 var good = require('good');
 var goodConsole = require('good-console');
 var goodFile = require('good-file');
 var goodHttp = require('good-http');
 var fs = require('fs');
 var path = require('path');
+
+/**
+ * Config
+  */
+var config = require('getconfig');
 
 /**
  * Err Function
