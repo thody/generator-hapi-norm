@@ -1,4 +1,9 @@
 /**
+ * Config Location
+ */
+process.env.GETCONFIG_ROOT = './config';
+
+/**
  * Set default node environment
  * @type {string|*}
  */
