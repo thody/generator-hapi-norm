@@ -36,7 +36,7 @@ module.exports = yeoman.generators.Base.extend({
   createControllerFile: function() {
     var nameSlug = slug(this.name);
     this.humanizedSingularName = nameSlug;
-    this.template(this.templatePath('environment.js'), this.destinationPath('./config/env/' + nameSlug + 'Environment.js'))
+    this.template(this.templatePath('environment.json'), this.destinationPath('./config/' + nameSlug + '_config.json'))
   }
 
 });
