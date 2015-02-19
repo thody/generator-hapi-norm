@@ -23,6 +23,11 @@ var path = require('path');
   */
 var config = require('getconfig');
 
+<% if (includeDatabase) { %>/**
+ * Database
+ */
+var Database = require('./config/database');
+<% } %>
 /**
  * Err Function
  * @param err
@@ -34,6 +39,10 @@ var error = function(err) {
   }
 };
 
+/**
+ * Config for Good
+ * @type {{opsInterval: number, reporters: *[]}}
+ */
 var goodConfig = {
     opsInterval: 1000,
     reporters: [{
@@ -60,6 +69,7 @@ server.connection(config.server);
 
 /**
  * Adding routes
+ * TODO: limit these to *Controller files
  */
 var normalizedPath = path.join(__dirname, "controllers");
 fs.readdirSync(normalizedPath).forEach(function(file) {
@@ -89,18 +99,5 @@ server.register({
     }
   }
 });
-<% if (includeMongo) { %>var dbOpts = {
-    "url": "mongodb://localhost:27017/<%= slugifiedAppName %>",
-    "settings": {
-        "db": {
-            "native_parser": false
-        }
-    }
-};
-
-server.register({
-  register: require('hapi-mongodb'),
-  options: dbOpts
-}, error);<% } %>
 
 module.exports = server;

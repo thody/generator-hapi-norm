@@ -40,7 +40,7 @@ var HapiNorm = yeoman.generators.Base.extend({
       default: ''
     },{
       type: 'confirm',
-      name: 'includeMongo',
+      name: 'includeDatabase',
       message: 'Would you like to include mongo in this project?',
       default: true
     }];
@@ -52,7 +52,7 @@ var HapiNorm = yeoman.generators.Base.extend({
       this.appAuthor = props.appAuthor;
       this.repoUrl = props.repoUrl;
 
-      this.includeMongo = props.includeMongo;
+      this.includeDatabase = props.includeDatabase;
 
       this.slugifiedAppName = this._.slugify(this.appName);
       this.humanizedAppName = this._.humanize(this.appName);
@@ -100,6 +100,8 @@ var HapiNorm = yeoman.generators.Base.extend({
     this.template('_server.js', 'server.js');
     this.template('./config/_development_config.json', './config/development_config.json');
     this.template('./config/_test_config.json', './config/test_config.json');
+    this.template('./config/_test_config.json', './config/test_config.json');
+    this.template('./config/_database.js', './config/database.js');
  	},
 
   install: function () {
