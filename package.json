@@ -1,6 +1,6 @@
 {
   "name": "generator-hapi-norm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "HapiJs Yeoman API Generator",
   "license": "MIT",
   "main": "app/index.js",
