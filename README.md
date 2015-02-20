@@ -2,7 +2,7 @@
 
 Self contained Hapi w/gulp Yeoman generator with the added option to set up a mongoose database.
 
-##Min Requirements
+## Min Requirements
 * Yeoman 1.4.5
 * Npm 2.1.17
 
