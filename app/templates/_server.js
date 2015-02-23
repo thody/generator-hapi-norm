@@ -28,16 +28,6 @@ var config = require('getconfig');
  */
 var Database = require('./config/database');
 <% } %>
-/**
- * Err Function
- * @param err
- */
-var error = function(err) {
-  if(err) {
-    console.warn(err);
-    throw err;
-  }
-};
 
 /**
  * Config for Good
@@ -81,12 +71,18 @@ fs.readdirSync(normalizedPath).forEach(function(file) {
 /**
  * Adding plugins
  */
-server.register({register: require('lout')}, function(err) {if(err) {console.log(err); }});
-server.register({
-  register: good,
-  options: goodConfig
-}, function (err) {
-  if (err) {error(err)}
+server.register([
+  {
+    register: require('lout'),
+    options: {}
+  },{
+    register: good,
+    options: goodConfig
+  }
+], function (err) {
+  if (err) {
+    console.log('Failed to load a plugin:', err);
+  }
 
   else {
     /**
