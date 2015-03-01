@@ -1,13 +1,17 @@
-# Normative Hapi Yeoman Generator
+# hapi.js Service Generator
 
-Self contained Hapi w/gulp Yeoman generator with the added option to set up a mongoose database.
+Quickly scaffold a production-ready hapi.js service.
 
-## Min Requirements
+Maintained by: [flashpunk](http://www.github.com/flashpunk) and [thody](http://www.github.com/thody)
+
+
+## System Requirements
+
 * Yeoman 1.4.5
 * Npm 2.1.17
 
-## Basic Usage
-* Pull the repo from Github.
-* Run `npm install`.
-* Once the install is completed, type `npm link`.
-* At this point you can use `yo hapi-norm` like a regular Yeoman generator.
+## Usage
+
+* Run `npm install -g generator-hapi-service`.
+* From your project directory, run `yo hapi-service`
+* Follow the prompts
