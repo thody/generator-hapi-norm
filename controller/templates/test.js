@@ -15,7 +15,7 @@
         url: '/<%= humanizedSingularName %>'
       };
       server.inject(options, function(res) {
-        code.expect(res.statusCode).to.equal(200);
+        code.expect(res.statusCode).to.equal(201);
         done();
       });
     });

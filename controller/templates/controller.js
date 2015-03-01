@@ -1,27 +1,35 @@
 'use strict';
 
-var <%= humanizedSingularName %>Controller = {
-  create: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+// Define handlers
+var controller = {
+
+  create: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>').code(201);
   },
-  read: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+
+  read: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  update: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+
+  update: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  del: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+
+  destroy: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  list: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+  
+  list: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   }
 };
 
+
+// Export routes
 module.exports = [
-  {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.create}},
-  {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: <%= humanizedSingularName %>Controller.read}},
-  {method: 'PUT',     path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.update}},
-  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.del}},
-  {method: 'GET',     path: '/<%= humanizedSingularName %>s', config: {handler: <%= humanizedSingularName %>Controller.list}}
+  {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: controller.create}},
+  {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: controller.read}},
+  {method: 'PUT',     path: '/<%= humanizedSingularName %>', config: {handler: controller.update}},
+  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: controller.destroy}},
+  {method: 'GET',     path: '/<%= humanizedSingularName %>s', config: {handler: controller.list}}
 ];

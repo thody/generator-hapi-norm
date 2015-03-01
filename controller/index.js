@@ -5,8 +5,6 @@ var slug = require('slug');
 module.exports = yeoman.generators.Base.extend({
 
   initializing: function () {
-    this.log('You called the HapiNorm subgenerator with the argument ' + this.name + '.');
-
     this.argument('name', {
       required: true,
       type: String,
