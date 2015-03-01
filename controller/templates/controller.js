@@ -22,6 +22,6 @@ module.exports = [
   {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: controller.create}},
   {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: controller.read}},
   {method: 'PUT',     path: '/<%= humanizedSingularName %>', config: {handler: controller.update}},
-  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: controller.del}},
+  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: controller.destroy}},
   {method: 'GET',     path: '/<%= humanizedSingularName %>s', config: {handler: controller.list}}
 ];
