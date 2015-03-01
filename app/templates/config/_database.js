@@ -4,9 +4,13 @@ var Mongoose = require('mongoose');
 // Config
 var Config = require('getconfig');
 
-//load database
+// Connect to database
 Mongoose.connect(Config.mongo.url);
-Mongoose.set('debug', true);
+
+if (process.env.NODE_ENV === 'development') {
+  Mongoose.set('debug', true);
+}
+
 var db = Mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error'));
