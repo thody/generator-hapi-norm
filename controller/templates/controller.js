@@ -1,6 +1,6 @@
 'use strict';
 
-var <%= humanizedSingularName %>Controller = {
+var controller = {
   create: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>');
   },
@@ -19,9 +19,9 @@ var <%= humanizedSingularName %>Controller = {
 };
 
 module.exports = [
-  {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.create}},
-  {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: <%= humanizedSingularName %>Controller.read}},
-  {method: 'PUT',     path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.update}},
-  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.del}},
-  {method: 'GET',     path: '/<%= humanizedSingularName %>s', config: {handler: <%= humanizedSingularName %>Controller.list}}
+  {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: controller.create}},
+  {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: controller.read}},
+  {method: 'PUT',     path: '/<%= humanizedSingularName %>', config: {handler: controller.update}},
+  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: controller.del}},
+  {method: 'GET',     path: '/<%= humanizedSingularName %>s', config: {handler: controller.list}}
 ];
