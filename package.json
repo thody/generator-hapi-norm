@@ -6,7 +6,7 @@
   "main": "app/index.js",
   "repository": "http://github.com/normative/generator-hapi-norm",
   "author": {
-    "name": "Normative Design",
+    "name": "Normative",
     "url": "http://github.com/normative"
   },
   "engines": {
