@@ -1,5 +1,6 @@
 'use strict';
 
+// Define handlers
 var controller = {
   create: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>');
@@ -18,6 +19,8 @@ var controller = {
   }
 };
 
+
+// Export routes
 module.exports = [
   {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: controller.create}},
   {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: controller.read}},
