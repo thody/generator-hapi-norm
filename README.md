@@ -1,6 +1,6 @@
 # hapi.js Service Generator
 
-Quickly scaffold a production-ready hapi.js service.
+Quickly scaffold a production-ready [hapi.js](http://hapijs.com) service.
 
 Maintained by: [flashpunk](http://www.github.com/flashpunk) and [thody](http://www.github.com/thody)
 
