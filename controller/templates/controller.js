@@ -1,20 +1,20 @@
 'use strict';
 
 var <%= humanizedSingularName %>Controller = {
-  create: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+  create: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  read: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+  read: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  update: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+  update: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  destroy: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+  destroy: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   },
-  list: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+  list: function (request, reply) {
+    reply('New controller <%= humanizedSingularName %>');
   }
 };
 
