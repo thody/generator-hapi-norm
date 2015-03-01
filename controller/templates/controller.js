@@ -2,18 +2,23 @@
 
 // Define handlers
 var controller = {
+
   create: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>').code(201);
   },
+
   read: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>');
   },
+
   update: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>');
   },
+
   destroy: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>');
   },
+  
   list: function (request, reply) {
     reply('New controller <%= humanizedSingularName %>');
   }
