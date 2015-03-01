@@ -10,7 +10,7 @@ var <%= humanizedSingularName %>Controller = {
   update: function (req, res) {
     res('New controller <%= humanizedSingularName %>');
   },
-  del: function (req, res) {
+  destroy: function (req, res) {
     res('New controller <%= humanizedSingularName %>');
   },
   list: function (req, res) {
