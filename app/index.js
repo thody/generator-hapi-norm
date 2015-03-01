@@ -15,25 +15,25 @@ var HapiNorm = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the ' + chalk.red('HapiNorm') + ' generator! You sure are one bad-ass mo-fo!'
+      'Welcome to the ' + chalk.red('hapi service') + ' generator!'
     ));
 
     var prompts = [{
       name: 'appName',
       message: 'What would you like to call your application?',
-      default: 'New Hapi Project'
+      default: 'My Service'
     }, {
       name: 'appDescription',
       message: 'How would you describe your application?',
-      default: 'Hapi Api'
+      default: 'My Service'
     }, {
       name: 'appKeywords',
       message: 'How would you describe your application in comma seperated key words?',
-      default: 'Hapi, Hapijs'
+      default: 'rest, microservice, web-service'
     }, {
       name: 'appAuthor',
       message: 'What is your company/author name?',
-      default: 'Normative Design'
+      default: ''
     }, {
       name: 'repoUrl',
       message: 'What is the repo URL?',
@@ -41,7 +41,7 @@ var HapiNorm = yeoman.generators.Base.extend({
     },{
       type: 'confirm',
       name: 'includeDatabase',
-      message: 'Would you like to include mongo in this project?',
+      message: 'Would you like to add MongooseJS configuration?',
       default: true
     }];
 
