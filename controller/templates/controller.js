@@ -2,10 +2,10 @@
 
 exports.routes = [];
 
-// List <%= humanizedSingularName %>
+// List <%= nameSlug %>
 exports.routes.push({
   method: 'GET',
-  path: '/<%= humanizedSingularName %>',
+  path: '/<%= nameSlugKC %>',
   config: {
     handler: function (request, reply) {
       reply('Hello world');
