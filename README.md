@@ -18,6 +18,7 @@ Maintained by: [flashpunk](http://www.github.com/flashpunk) and [thody](http://w
 
 ### Controllers
 
-* Run `yo hapi-service:controller Users`
+Generate a new controller in your current working directory called `UsersController.js` with an example route configured: `yo hapi-service:controller Users`
 
-This will generate a new controller `controllers/UsersController.js` with empty handlers and routes configured for CRUD operations.
+Generate a controller test harness in your current working directory called `UsersControllerTests.js`: `yo hapi-service:controllerTest Users`
+
