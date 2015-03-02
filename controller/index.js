@@ -1,4 +1,5 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
 var slug = require('slug');
 
@@ -8,14 +9,13 @@ module.exports = yeoman.generators.Base.extend({
     this.argument('name', {
       required: true,
       type: String,
-      desc: 'The subgenerator name'
+      desc: 'Controller generator'
     });
   },
-  createControllerFile: function() {
-    var nameSlug = slug(this.name);
-    this.humanizedSingularName = nameSlug.toLowerCase();
-    this.template(this.templatePath('controller.js'), this.destinationPath('./controllers/' + nameSlug + 'Controller.js'))
-    this.template(this.templatePath('test.js'), this.destinationPath('./test/' + nameSlug + 'Test.js'))
-  }
 
+  createControllerFile: function() {
+    var nameSlug = this.name;
+    this.humanizedSingularName = nameSlug.toLowerCase();
+    this.template(this.templatePath('controller.js'), this.destinationPath('./' + nameSlug + 'Controller.js'));
+  }
 });

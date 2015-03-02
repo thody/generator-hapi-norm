@@ -2,6 +2,7 @@
 
 exports.routes = [];
 
+// List <%= humanizedSingularName %>
 exports.routes.push({
   method: 'GET',
   path: '/<%= humanizedSingularName %>',
