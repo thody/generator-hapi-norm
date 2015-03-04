@@ -1,6 +1,6 @@
 Quickly scaffold a production-ready [hapi.js](http://hapijs.com) service.
 
-Maintained by: [flashpunk](http://www.github.com/flashpunk) and [thody](http://www.github.com/thody)
+Maintained by: [michaelryancaputo](http://www.github.com/michaelryancaputo) and [thody](http://www.github.com/thody)
 
 
 ## System Requirements
