@@ -94,7 +94,10 @@ var HapiNorm = yeoman.generators.Base.extend({
     this.template('./config/_development_config.json', './config/development_config.json');
     this.template('./config/_test_config.json', './config/test_config.json');
     this.template('./config/_test_config.json', './config/test_config.json');
-    this.template('./config/_database.js', './config/database.js');
+
+    if (this.includeDatabase) {
+      this.template('./config/_database.js', './config/database.js');
+    }
  	},
 
   install: function () {
