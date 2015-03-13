@@ -1,6 +1,6 @@
 {
   "name": "generator-hapi-service",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Yeoman Generator for Hapi services",
   "license": "MIT",
   "main": "app/index.js",
