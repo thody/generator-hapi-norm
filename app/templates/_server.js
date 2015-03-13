@@ -55,7 +55,9 @@ var goodConfig = {
 /**
  * Creating Server connection with our configuration
  */
-server.connection(config.server);
+server.connection({
+  port: process.env.PORT || config.server.port || 8000
+});
 
 /**
  * Adding routes

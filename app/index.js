@@ -15,17 +15,17 @@ var HapiNorm = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the ' + chalk.red('HapiNorm') + ' generator! You sure are one bad-ass mo-fo!'
+      'Welcome to the ' + chalk.red('hapi service') + ' generator!'
     ));
 
     var prompts = [{
       name: 'appName',
       message: 'What would you like to call your application?',
-      default: 'New Hapi Project'
+      default: 'My Service'
     }, {
       name: 'appDescription',
       message: 'How would you describe your application?',
-      default: 'Hapi Api'
+      default: 'My Service'
     },{
       name: 'isPrivate',
       type: 'confirm',
@@ -34,11 +34,11 @@ var HapiNorm = yeoman.generators.Base.extend({
     }, {
       name: 'appKeywords',
       message: 'How would you describe your application in comma seperated key words?',
-      default: 'Hapi, Hapijs'
+      default: 'rest, microservice, web-service'
     }, {
       name: 'appAuthor',
       message: 'What is your company/author name?',
-      default: 'Normative Design'
+      default: ''
     }, {
       name: 'repoUrl',
       message: 'What is the repo URL?',
@@ -46,7 +46,7 @@ var HapiNorm = yeoman.generators.Base.extend({
     },{
       type: 'confirm',
       name: 'includeDatabase',
-      message: 'Would you like to include mongo in this project?',
+      message: 'Would you like to add MongooseJS configuration?',
       default: true
     }];
 
@@ -82,10 +82,6 @@ var HapiNorm = yeoman.generators.Base.extend({
         this.destinationPath('gulpfile.js')
       );
       this.fs.copy(
-        this.templatePath('controllers'),
-        this.destinationPath('controllers')
-      );
-      this.fs.copy(
         this.templatePath('test'),
         this.destinationPath('test')
       );
@@ -96,11 +92,15 @@ var HapiNorm = yeoman.generators.Base.extend({
  		this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
     this.template('_server.js', 'server.js');
+    this.template('_routes.js', 'routes.js');
     this.template('_README.md', 'README.md');
     this.template('./config/_development_config.json', './config/development_config.json');
     this.template('./config/_test_config.json', './config/test_config.json');
     this.template('./config/_test_config.json', './config/test_config.json');
-    this.template('./config/_database.js', './config/database.js');
+
+    if (this.includeDatabase) {
+      this.template('./config/_database.js', './config/database.js');
+    }
  	},
 
   install: function () {

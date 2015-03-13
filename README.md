@@ -1,13 +1,24 @@
-# Normative Hapi Yeoman Generator
+Quickly scaffold a production-ready [hapi.js](http://hapijs.com) service.
 
-Self contained Hapi w/gulp Yeoman generator with the added option to set up a mongoose database.
+Maintained by: [michaelryancaputo](http://www.github.com/michaelryancaputo) and [thody](http://www.github.com/thody)
 
-## Min Requirements
+
+## System Requirements
+
 * Yeoman 1.4.5
 * Npm 2.1.17
 
-## Basic Usage
-* Pull the repo from Github.
-* Run `npm install`.
-* Once the install is completed, type `npm link`.
-* At this point you can use `yo hapi-norm` like a regular Yeoman generator.
+## Usage
+
+### New Project
+
+* Run `npm install -g generator-hapi-service`.
+* From your project directory, run `yo hapi-service`
+* Follow the prompts
+
+### Controllers
+
+Generate a new controller in your current working directory called `UsersController.js` with an example route configured: `yo hapi-service:controller Users`
+
+Generate a controller test harness in your current working directory called `UsersControllerTests.js`: `yo hapi-service:controllerTest Users`
+

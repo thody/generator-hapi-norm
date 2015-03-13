@@ -1,27 +1,13 @@
-'use strict';
+// Declare routes
+exports.routes = [];
 
-var <%= humanizedSingularName %>Controller = {
-  create: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
-  },
-  read: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
-  },
-  update: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
-  },
-  del: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
-  },
-  list: function (req, res) {
-    res('New controller <%= humanizedSingularName %>');
+// List <%= nameSlug %>
+exports.routes.push({
+  method: 'GET',
+  path: '/<%= nameSlugKC %>',
+  config: {
+    handler: function (request, reply) {
+      reply('Hello world');
+    }
   }
-};
-
-module.exports = [
-  {method: 'POST',    path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.create}},
-  {method: 'GET',     path: '/<%= humanizedSingularName %>/{<%= humanizedSingularName %>?}', config: {handler: <%= humanizedSingularName %>Controller.read}},
-  {method: 'PUT',     path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.update}},
-  {method: 'DELETE',  path: '/<%= humanizedSingularName %>', config: {handler: <%= humanizedSingularName %>Controller.del}},
-  {method: 'GET',     path: '/<%= humanizedSingularName %>s', config: {handler: <%= humanizedSingularName %>Controller.list}}
-];
+});
