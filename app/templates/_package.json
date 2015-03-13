@@ -10,6 +10,9 @@
   "keywords": [
     "<%= appKeywords %>"
   ],
+  <% if (isPrivate) { %>
+  "private": true,
+  <% } %>
   "dependencies": {
     "hapi": "^8.2.0",
     "hoek": "^2.11.0",

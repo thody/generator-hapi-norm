@@ -26,6 +26,11 @@ var HapiNorm = yeoman.generators.Base.extend({
       name: 'appDescription',
       message: 'How would you describe your application?',
       default: 'My Service'
+    },{
+      name: 'isPrivate',
+      type: 'confirm',
+      message: 'Would you like to mark this package as private?',
+      default: true
     }, {
       name: 'appKeywords',
       message: 'How would you describe your application in comma seperated key words?',
@@ -48,6 +53,7 @@ var HapiNorm = yeoman.generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.appName = props.appName;
       this.appDescription = props.appDescription;
+      this.isPrivate = props.isPrivate;
       this.appKeywords = props.appKeywords;
       this.appAuthor = props.appAuthor;
       this.repoUrl = props.repoUrl;
