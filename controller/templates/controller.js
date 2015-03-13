@@ -1,5 +1,4 @@
-'use strict';
-
+// Declare routes
 exports.routes = [];
 
 // List <%= nameSlug %>
