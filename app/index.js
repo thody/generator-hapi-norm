@@ -92,7 +92,7 @@ var HapiNorm = yeoman.generators.Base.extend({
  		this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
     this.template('_server.js', 'server.js');
-    this.template('_routes.js', 'routes.js');
+    this.template('_helloWorldController.js', './greetings/helloWorldController.js');
     this.template('_README.md', 'README.md');
     this.template('./config/_development_config.json', './config/development_config.json');
     this.template('./config/_test_config.json', './config/test_config.json');
@@ -104,6 +104,7 @@ var HapiNorm = yeoman.generators.Base.extend({
  	},
 
   install: function () {
+    this.npmInstall(['glob'], { 'save': true });
     this.installDependencies({
       skipInstall: this.options['skip-install']
     });
