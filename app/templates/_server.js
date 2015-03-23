@@ -6,10 +6,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 // Load modules
+var _ = require('lodash');
 var Hapi = require('hapi');
 var GoodConsole = require('good-console');
-var Fs = require('fs');
-var Path = require('path');
+var Glob = require('glob');
 
 
 // Load configuration
@@ -40,11 +40,13 @@ server.connection({
 
 
 // Load routes
-var normalizedPath = Path.join(__dirname, "controllers");
-Fs.readdirSync(normalizedPath).forEach(function(file) {
-  server.route(
-    require("./controllers/" + file)
-  );
+var controllers = Glob.sync('**/*Controller.js', {});
+
+_.forEach(controllers, function (controller) {
+
+  server.route(require(__dirname + '/' + controller).routes);
+  console.log('- Loaded routes from %s', controller);
+
 });
 
 
@@ -53,7 +55,9 @@ server.register([
   {
     register: require('lout'),
     options: {}
-  },{
+  },
+
+  {
     register: require('good'),
     options: goodConfig
   }
