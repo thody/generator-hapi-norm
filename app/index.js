@@ -147,9 +147,7 @@ var HapiNorm = yeoman.generators.Base.extend({
 
   end: function () {
 
-    this.log(yosay(
-      'We\'re all done here, have a nice day!'
-    ));
+    this.log(yosay('Run `' + chalk.green('npm start') + '` to start your new service.'));
 
   }
 });
