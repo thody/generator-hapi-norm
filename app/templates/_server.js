@@ -1,95 +1,72 @@
-/**
- * Config Location
- */
+// Set configuration root directory
 process.env.GETCONFIG_ROOT = './config';
 
-/**
- * Set default node environment
- * @type {string|*}
- */
+// Configure default environment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+
+// Load modules
 var Hapi = require('hapi');
-var server = new Hapi.Server();
-var good = require('good');
-var goodConsole = require('good-console');
-var goodFile = require('good-file');
-var goodHttp = require('good-http');
-var fs = require('fs');
-var path = require('path');
+var GoodConsole = require('good-console');
+var Fs = require('fs');
+var Path = require('path');
 
-/**
- * Config
-  */
-var config = require('getconfig');
 
-<% if (includeDatabase) { %>/**
- * Database
- */
+// Load configuration
+var Config = require('getconfig');
+
+<% if (includeDatabase) { %>
+// Load database configuration
 var Database = require('./config/database');
 <% } %>
 
-/**
- * Config for Good
- * @type {{opsInterval: number, reporters: *[]}}
- */
+// Configure reporting
 var goodConfig = {
-    opsInterval: 1000,
     reporters: [{
-        reporter: goodConsole,
+        reporter: GoodConsole,
         args:[{ log: '*', response: '*' }]
-    }, {
-        reporter: goodFile,
-        args: ['./test/awesome_log', { ops: '*' }]
-    }, {
-        reporter: goodHttp,
-        args: [{ error: '*' }, 'http://prod.logs:3000', {
-            threshold: 20,
-            wreck: {
-                headers: { 'x-api-key' : 12345 }
-            }
-        }]
     }]
 };
 
-/**
- * Creating Server connection with our configuration
- */
+
+// Instantiate server
+var server = new Hapi.Server();
+
+
+// Establish connection
 server.connection({
-  port: process.env.PORT || config.server.port || 8000
+  port: process.env.PORT || Config.server.port || 8000
 });
 
-/**
- * Adding routes
- * TODO: limit these to *Controller files
- */
-var normalizedPath = path.join(__dirname, "controllers");
-fs.readdirSync(normalizedPath).forEach(function(file) {
+
+// Load routes
+var normalizedPath = Path.join(__dirname, "controllers");
+Fs.readdirSync(normalizedPath).forEach(function(file) {
   server.route(
     require("./controllers/" + file)
   );
 });
 
-/**
- * Adding plugins
- */
+
+// Register plugins
 server.register([
   {
     register: require('lout'),
     options: {}
   },{
-    register: good,
+    register: require('good'),
     options: goodConfig
   }
 ], function (err) {
-  if (err) {
-    console.log('Failed to load a plugin:', err);
-  }
 
-  else {
-    /**
-     * Starting server
-     */
+  if (err) {
+
+    console.log('Failed to load a plugin:', err);
+    process.exit(1);
+
+  } else {
+
+    // Start server
     if (!module.parent) {
       server.start(function () {
         console.info('Server started at ' + server.info.uri);
