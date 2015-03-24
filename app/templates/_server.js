@@ -7,9 +7,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Load modules
 var _ = require('lodash');
-var Hapi = require('hapi');
-var GoodConsole = require('good-console');
 var Glob = require('glob');
+var Good = require('good');
+var GoodConsole = require('good-console');
+var Hapi = require('hapi');
+var Hoek = require('hoek');
+var Lout = require('lout');
 
 
 // Load configuration
@@ -53,29 +56,25 @@ _.forEach(controllers, function (controller) {
 // Register plugins
 server.register([
   {
-    register: require('lout'),
-    options: {}
+    register: Lout
   },
 
   {
-    register: require('good'),
+    register: Good,
     options: goodConfig
   }
 ], function (err) {
 
-  if (err) {
+  Hoek.assert(!err, err);
 
-    console.log('Failed to load a plugin:', err);
-    process.exit(1);
+  // Start server
+  if (!module.parent) {
 
-  } else {
+    server.start(function (err) {
 
-    // Start server
-    if (!module.parent) {
-      server.start(function () {
-        console.info('Server started at ' + server.info.uri);
-      });
-    }
+      Hoek.assert(!err, err);
+      console.info('Server started at ' + server.info.uri);
+    });
   }
 });
 
