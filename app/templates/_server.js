@@ -1,6 +1,3 @@
-// Set configuration root directory
-process.env.GETCONFIG_ROOT = './config';
-
 // Configure default environment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -23,8 +20,11 @@ var Config = require('getconfig');
 var Database = require('./config/database');
 <% } %>
 
+// Declare internals
+var internals = {};
+
 // Configure reporting
-var goodConfig = {
+internals.goodConfig = {
     reporters: [{
         reporter: GoodConsole,
         args:[{ log: '*', response: '*' }]
@@ -32,50 +32,44 @@ var goodConfig = {
 };
 
 
-// Instantiate server
-var server = new Hapi.Server();
+internals.init = function () {
+
+  var server = new Hapi.Server();
+  server.connection({
+    port: process.env.PORT || Config.server.port || 8000
+  });
 
 
-// Establish connection
-server.connection({
-  port: process.env.PORT || Config.server.port || 8000
-});
+  // Load routes
+  var controllers = Glob.sync('**/*Controller.js', {});
+
+  _.forEach(controllers, function (controller) {
+
+    server.route(require(__dirname + '/' + controller).routes);
+    console.log('- Loaded routes from %s', controller);
+
+  });
 
 
-// Load routes
-var controllers = Glob.sync('**/*Controller.js', {});
+  // Register plugins
+  server.register([
+    {
+      register: Lout
+    },
 
-_.forEach(controllers, function (controller) {
+    {
+      register: Good,
+      options: internals.goodConfig
+    }
+  ], function (err) {
 
-  server.route(require(__dirname + '/' + controller).routes);
-  console.log('- Loaded routes from %s', controller);
-
-});
-
-
-// Register plugins
-server.register([
-  {
-    register: Lout
-  },
-
-  {
-    register: Good,
-    options: goodConfig
-  }
-], function (err) {
-
-  Hoek.assert(!err, err);
-
-  // Start server
-  if (!module.parent) {
-
+    Hoek.assert(!err, err);
     server.start(function (err) {
 
       Hoek.assert(!err, err);
       console.info('Server started at ' + server.info.uri);
     });
-  }
-});
+  });
+};
 
-module.exports = server;
+internals.init();
