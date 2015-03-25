@@ -4,21 +4,14 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Load modules
 var _ = require('lodash');
+var Config = require('getconfig');
 var Glob = require('glob');
 var Good = require('good');
 var GoodConsole = require('good-console');
 var Hapi = require('hapi');
 var Hoek = require('hoek');
 var Lout = require('lout');
-
-
-// Load configuration
-var Config = require('getconfig');
-
-<% if (includeDatabase) { %>
-// Load database configuration
-var Database = require('./config/database');
-<% } %>
+<% if (includeDatabase) { %>var Database = require('./lib/database');<% } %>
 
 // Declare internals
 var internals = {};
@@ -53,6 +46,13 @@ internals.init = function () {
 
   // Register plugins
   server.register([
+  <% if (includeDatabase) { %>{
+      register: Database,
+      options: {
+        url: Config.mongo.url
+      }
+    },<% } %>
+
     {
       register: Lout
     },
