@@ -1,0 +1,8 @@
+{
+  "mongo": {
+    "url": "mongodb://localhost/<%= slugifiedAppName %>"
+  },
+  "server": {
+    "port": 8000
+  }
+}
