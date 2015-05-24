@@ -26,7 +26,7 @@ var HapiNorm = yeoman.generators.Base.extend({
       name: 'appDescription',
       message: 'How would you describe your application?',
       default: 'My Service'
-    },{
+    }, {
       name: 'isPrivate',
       type: 'confirm',
       message: 'Would you like to mark this package as private?',
@@ -43,7 +43,7 @@ var HapiNorm = yeoman.generators.Base.extend({
       name: 'repoUrl',
       message: 'What is the repo URL?',
       default: ''
-    },{
+    }, {
       type: 'confirm',
       name: 'includeDatabase',
       message: 'Would you like to add MongooseJS configuration?',
@@ -88,33 +88,66 @@ var HapiNorm = yeoman.generators.Base.extend({
     }
   },
 
-  renderApplicationDependenciesFiles: function() {
- 		this.template('_package.json', 'package.json');
+  renderApplicationDependenciesFiles: function () {
+    this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
     this.template('_server.js', 'server.js');
-    this.template('_routes.js', 'routes.js');
+    this.template('_helloWorldController.js', './greetings/helloWorldController.js');
     this.template('_README.md', 'README.md');
     this.template('./config/_development_config.json', './config/development_config.json');
     this.template('./config/_default.json', './config/default.json');
     this.template('./config/_test_config.json', './config/test_config.json');
 
     if (this.includeDatabase) {
-      this.template('./config/_database.js', './config/database.js');
+      this.template('./lib/_database.js', './lib/database.js');
     }
- 	},
+  },
 
   install: function () {
+    var dependencies = [
+      'hapi',
+      'hoek',
+      'boom',
+      'good',
+      'good-console',
+      'joi',
+      'lout',
+      'getconfig',
+      'lodash',
+      'glob'
+    ];
+
+    if (this.includeDatabase) {
+      dependencies.push('mongoose');
+    }
+
+    var devDependencies = [
+      'lab',
+      'code',
+      'gulp-lab',
+      'gulp-jshint',
+      'gulp',
+      'gulp-serve',
+      'gulp-ruby-sass',
+      'gulp-util',
+      'gulp-uglify',
+      'gulp-watch',
+      'gulp-concat',
+      'gulp-notify',
+      'gulp-nodemon'
+    ];
+
+    this.npmInstall(dependencies, { 'save': true });
+    this.npmInstall(devDependencies, { 'saveDev': true });
+
     this.installDependencies({
       skipInstall: this.options['skip-install']
     });
   },
 
-  end: function() {
+  end: function () {
 
-    this.log(yosay(
-      'We\'re all done here, have a nice day!'
-    ));
-
+    this.log(yosay('Run `' + chalk.green('npm start') + '` to start your new service.'));
 
   }
 });

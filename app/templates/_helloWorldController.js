@@ -6,7 +6,7 @@ exports.routes.push({
   path: '/',
   handler: function (req, res) {
 
-    res('Hello world!');
+    res({ message: 'Hello world!' });
 
   }
 });
