@@ -20,7 +20,7 @@ var internals = {};
 internals.goodConfig = {
     reporters: [{
         reporter: GoodConsole,
-        args:[{ log: '*', response: '*' }]
+        events: [{ log: '*', response: '*' }]
     }]
 };
 
