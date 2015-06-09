@@ -91,12 +91,13 @@ var HapiNorm = yeoman.generators.Base.extend({
   renderApplicationDependenciesFiles: function () {
     this.template('_package.json', 'package.json');
     this.template('_bower.json', 'bower.json');
-    this.template('_server.js', 'server.js');
-    this.template('_helloWorldController.js', './greetings/helloWorldController.js');
+    this.template('./lib/_index.js', './lib/index.js');
+    this.template('./lib/_start.js', './lib/start.js');
+    this.template('./lib/_version.js', './lib/version.js');
     this.template('_README.md', 'README.md');
-    this.template('./config/_development_config.json', './config/development_config.json');
+    this.template('./config/_development.json', './config/development.json');
     this.template('./config/_default.json', './config/default.json');
-    this.template('./config/_test_config.json', './config/test_config.json');
+    this.template('./config/_test.json', './config/test.json');
 
     if (this.includeDatabase) {
       this.template('./lib/_database.js', './lib/database.js');
@@ -108,6 +109,7 @@ var HapiNorm = yeoman.generators.Base.extend({
       'hapi',
       'hoek',
       'boom',
+      'glue',
       'good',
       'good-console',
       'joi',
