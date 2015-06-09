@@ -20,7 +20,7 @@
     "controller"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator", "hapijs", "microservices"
   ],
   "dependencies": {
     "chalk": "^0.5.0",
