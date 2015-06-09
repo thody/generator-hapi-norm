@@ -6,15 +6,14 @@
 ## This package uses:
 
 * Hapi
-* Gulp
 * Lab for testing
 * Mongoose (optional)
 
 ## Get things running
 
-* The default gulp task will run tests and start nodemon.
-* `gulp test` wlll run tests
-* `gulp serve` will start nodemon
+* Start the server `npm start`
+* Run tests `npm test`
+* With the server running, open `http://localhost:8000/version` to see the version of your package
 
 ## Controller Sub-Generator
 
