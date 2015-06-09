@@ -78,10 +78,6 @@ var HapiNorm = yeoman.generators.Base.extend({
 
     projectfiles: function () {
       this.fs.copy(
-        this.templatePath('_gulpfile.js'),
-        this.destinationPath('gulpfile.js')
-      );
-      this.fs.copy(
         this.templatePath('test'),
         this.destinationPath('test')
       );
@@ -90,7 +86,6 @@ var HapiNorm = yeoman.generators.Base.extend({
 
   renderApplicationDependenciesFiles: function () {
     this.template('_package.json', 'package.json');
-    this.template('_bower.json', 'bower.json');
     this.template('./lib/_index.js', './lib/index.js');
     this.template('./lib/_start.js', './lib/start.js');
     this.template('./lib/_version.js', './lib/version.js');
