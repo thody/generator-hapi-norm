@@ -1,6 +1,6 @@
 {
   "name": "generator-hapi-service",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Yeoman Generator for Hapi services",
   "license": "MIT",
   "main": "app/index.js",
@@ -20,7 +20,9 @@
     "controller"
   ],
   "keywords": [
-    "yeoman-generator", "hapijs", "microservices"
+    "yeoman-generator",
+    "hapijs",
+    "microservices"
   ],
   "dependencies": {
     "chalk": "^0.5.0",
