@@ -12,6 +12,7 @@ exports.register = function (server, options, next) {
 
   var connection = Mongoose.connection;
   connection.on('error', console.error.bind(console, 'connection error'));
+
   connection.once('open', function callback() {
     console.log('- Established database connection.');
     next();
