@@ -21,7 +21,7 @@ var HapiNorm = yeoman.generators.Base.extend({
     var prompts = [{
       name: 'appName',
       message: 'What would you like to call your application?',
-      default: 'My Service'
+      default: this._.slugify(process.cwd().split(path.sep).pop())
     }, {
       name: 'appDescription',
       message: 'How would you describe your application?',
