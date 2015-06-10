@@ -1,13 +1,18 @@
-// Declare routes
-exports.routes = [];
+exports.register = function (server, options, next) {
 
-// List <%= nameSlug %>
-exports.routes.push({
-  method: 'GET',
-  path: '/<%= nameSlugKC %>',
-  config: {
-    handler: function (request, reply) {
-      reply('Hello world');
+  server.route({
+    method: 'GET',
+    path: '/<%= nameSlugKC %>',
+    config: {
+      handler: function (request, reply) {
+        reply('Hello world');
+      }
     }
-  }
-});
+  });
+
+  next();
+};
+
+exports.register.attributes = {
+  name: '<%= nameSlugKC %>'
+};
