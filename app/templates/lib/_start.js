@@ -36,12 +36,12 @@ internals.manifest = {
 <% } %>
 
 // Load routes
-var controllers = Glob.sync('**/*Controller.js', {});
+var controllers = Glob.sync('**/*Controller.js', { cwd: process.cwd() + '/lib'});
 
 _.forEach(controllers, function (controller) {
 
-  internals.manifest.plugins[controller] = {};
-
+  internals.manifest.plugins['./' + controller] = {};
+  
 });
 
 internals.composeOptions = {
